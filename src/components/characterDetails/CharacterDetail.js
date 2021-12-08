@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import CharacterCard from "../../characterCard/CharacterCard";
+import CharacterCard from "../characterCard/CharacterCard";
 import { getCharacterDetail } from "../../redux/actions";
 import "./CharacterDetail.css";
 
@@ -26,8 +26,8 @@ function CharacterDetail() {
       <h1>Character Details</h1> 
       {/* Método para mostrar en este mismo componente  */}
         {/* <h4>Name: {detail.name}</h4> 
-        <h4>Birthday: {detail.birthday}</h4>          
-        <h4>Occupation: {detail.occupation.map(o=> (<p>{o}</p>))}</h4> 
+        <h4>Birthday: {detail.birthday}</h4>  
+        <h4>Occupation: {detail.occupation?.join(', ')}</h4>        
         <h4>Nickname: {detail.nickname}</h4>
         <h4>Status: {detail.status}</h4> */}
        
@@ -41,7 +41,7 @@ function CharacterDetail() {
             birthday={char.birthday}
             nickname={char.nickname}
             status={char.status}
-            occupation={char.occupation.join(', ')}   
+            occupation={char.occupation?.join(', ')}   
             category={char.category}
             portrayed={char.portrayed}
             appearance={char.appearance}   

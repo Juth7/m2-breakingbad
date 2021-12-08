@@ -12,16 +12,16 @@ function Home() {
   const response = useSelector((state)=>state.randomQuote)  
   const [phrase, setPhrase] = useState();  
   const dispatch = useDispatch()
- 
-  useEffect(()=> {  //AQUI ESTA EL USEEFFECT!!!
-    frase()
-  },[!response.length]) 
-  
+
   const frase = ()=>{
     dispatch(getRandomQuote());
     setPhrase(response)
   }
-
+ 
+  useEffect(()=> {  //AQUI ESTA EL USEEFFECT!!!
+    frase()
+  },[!response.length])   
+  
   return (
     <div className="Home">
       <img src={logo} alt="" className="Home__logo" />

@@ -22,7 +22,8 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 characterDetail: action.payload
             }   
-        case GET_EPISODES:            
+        case GET_EPISODES:  
+        console.log('payload' ,action.payload)          
             return{
                 ...state,
                 episodes: action.payload 
