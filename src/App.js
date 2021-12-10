@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import Characters from './components/characters/Characters';
 import CharacterDetail from './components/characterDetails/CharacterDetail';
 import Episodes from './components/episodes/Episodes';
+import Deaths from "./components/deaths/Deaths.jsx";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       <Route exact path='/characters'component={Characters}/> 
       <Route exact path='/characters/:id'component={CharacterDetail}/>
       <Route exact path='/episodes'component={Episodes}/>
-      
+      <Route exact path='/deaths' component={Deaths}/>
     </div>
   );
 }

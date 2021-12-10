@@ -9,6 +9,7 @@ function NavBar() {
       <Link to='/'>Home</Link>
       <Link to='/characters'>Characters</Link>
       <Link to='/episodes'>Episodes</Link>
+      <Link to='/deaths'>Deaths</Link>
     </div>
   );
 }

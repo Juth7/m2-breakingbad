@@ -3,6 +3,7 @@ export const GET_CHARACTER_DETAIL = 'GET_CHARACTER_DETAIL';
 export const GET_CHARACTERS = 'GET_CHARACTERS';
 export const GET_EPISODES = 'GET_EPISODES';
 export const GET_RANDOM_QUOTE = 'GET_RANDOM_QUOTE';
+export const GET_DEATHS = 'GET_DEATHS';
 
 export const getCharacters = (query)=>(dispatch) => {
     return fetch(`https://www.breakingbadapi.com/api/characters?name=${query}`)
@@ -21,7 +22,7 @@ export const getCharacterDetail = (id)=> dispatch => {
 }
 
 export const getEpisodes = ()=> dispatch=> {
-    return fetch(`https://www.breakingbadapi.com/api/episodes/`)
+    return fetch(`https://www.breakingbadapi.com/api/episodes?series=Breaking+Bad`)
         .then(response => response.json())
         .then(data=> {
             console.log(data)
@@ -32,5 +33,10 @@ export const getEpisodes = ()=> dispatch=> {
 export const getRandomQuote = ()=> dispatch=> {
     return axios('https://www.breakingbadapi.com/api/quote/random')              
         .then(json=> dispatch({type:GET_RANDOM_QUOTE, payload: json.data[0].quote}) //payload --info que le envío al reducer a guardar
+)}
+
+export const getDeaths = ()=> dispatch=> {
+    return axios('https://www.breakingbadapi.com/api/deaths')              
+        .then(json=> dispatch({type: GET_DEATHS, payload: json.data}) //payload --info que le envío al reducer a guardar
 )}
 

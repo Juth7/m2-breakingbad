@@ -1,4 +1,4 @@
-import { GET_CHARACTER_DETAIL, GET_CHARACTERS, GET_EPISODES, GET_RANDOM_QUOTE } from "../actions";
+import { GET_CHARACTER_DETAIL, GET_CHARACTERS, GET_EPISODES, GET_RANDOM_QUOTE, GET_DEATHS } from "../actions";
 
 
 const initialState= {
@@ -6,6 +6,7 @@ const initialState= {
     characterDetail: [],
     episodes:[],
     randomQuote: [],
+    deaths: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -34,7 +35,13 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 randomQuote: action.payload
-            }            
+            }
+        case GET_DEATHS:
+            console.log(action.payload)
+            return{
+                ...state,
+                deaths: action.payload
+            }                   
         default:
             return {...state};
     }

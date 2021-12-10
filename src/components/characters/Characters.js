@@ -42,7 +42,7 @@ function Characters() {
 
     return (
     <div className="Characters">
-      <h1>List of Characters</h1>
+      <h1>List of Characters</h1> <br/>
       
       <form onSubmit={handleSubmit}>                
         <input type="search" placeholder="Search characters" onChange={handlechange} value={query}/>
@@ -54,8 +54,8 @@ function Characters() {
        <Spinner />
        ) : (
        characters?.map((c)=>          
-            <li key={c.char_id}> {/*Si quiero que se muestre el detail en el componenente CharacterDetail, debo cambiar id por char_id*/}
-            <Link to= {`/characters/${c.char_id}`}> {/*Si quiero que se muestre el detail en el componenente CharacterDetail, debo cambiar id por char_id*/}
+            <li key={c.char_id}> 
+            <Link to= {`/characters/${c.char_id}`}> 
             {c.name}
             </Link> 
             </li>)               
