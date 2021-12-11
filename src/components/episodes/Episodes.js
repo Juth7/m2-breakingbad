@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getEpisodes } from "../../redux/actions";
 import { useState } from "react";
 import "./Episodes.css";
+import { Link } from "react-router-dom";
 
 function Episodes() {
 
@@ -46,9 +47,12 @@ function Episodes() {
         {/*Aca vamos a mostrar la lista de episodios de "Breaking Bad"*/}        
         {filter?.map((ep)=> (                    
           // e.series ==="Breaking Bad" &&
-          <li key={ep.episode_id}>                  
-            {ep.title}        
-          </li> 
+          console.log(ep.episode_id),
+          <div key={ep.episode_id}>
+            <Link to ={`/episodes/${ep.episode_id}`}>                 
+              {ep.title}  
+            </Link>     
+          </div> 
         ))          
         }
       </ul>

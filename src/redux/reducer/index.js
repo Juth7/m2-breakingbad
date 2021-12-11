@@ -1,12 +1,14 @@
-import { GET_CHARACTER_DETAIL, GET_CHARACTERS, GET_EPISODES, GET_RANDOM_QUOTE, GET_DEATHS } from "../actions";
+import { GET_CHARACTER_DETAIL, GET_CHARACTERS, GET_EPISODES, GET_RANDOM_QUOTE, GET_DEATHS, GET_DEATH_DETAIL, GET_EPISODE_DETAIL } from "../actions";
 
 
 const initialState= {
     characters: [],
     characterDetail: [],
-    episodes:[],
+    episodes: [],
+    episodeDetail: [],
     randomQuote: [],
     deaths: [],
+    deathDetail: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -29,7 +31,12 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 episodes: action.payload 
             }
-            
+        case GET_EPISODE_DETAIL:
+            console.log(state.characterDetail)
+            return{
+                ...state,
+                episodeDetail: action.payload 
+            }   
         case GET_RANDOM_QUOTE:
             console.log(action.payload)
             return{
@@ -41,7 +48,13 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 deaths: action.payload
-            }                   
+            }
+        case GET_DEATH_DETAIL:
+            console.log(action.payload)
+            return{
+                ...state,
+                deathDetail: action.payload  
+            }                     
         default:
             return {...state};
     }
