@@ -8,7 +8,7 @@ import CharacterDetail from './components/characterDetails/CharacterDetail';
 import Episodes from './components/episodes/Episodes';
 import Deaths from "./components/deaths/Deaths.jsx";
 import EpisodeDetail from "./components/episodeDetail/EpisodeDetail.jsx";
-import DeathDetail from "./components/deathDetail/DeathDetail.jsx";
+import DeathDetail from "./components/deathDetail/DeathDetail.js";
 
 
 function App() {

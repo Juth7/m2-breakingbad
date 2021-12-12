@@ -47,8 +47,8 @@ export const getDeaths = ()=> dispatch=> {
         .then(json=> dispatch({type: GET_DEATHS, payload: json.data}) 
 )}
 
-export const getDeathDetail = (query)=> dispatch=> {
-    return axios(`https://www.breakingbadapi.com/api/death?name=${query}`)              
+export const getDeathDetail = (payload)=> dispatch=> {
+    return axios(`https://www.breakingbadapi.com/api/death?name=` + payload)              
         .then(json=> {console.log(json.data);
             dispatch({type: GET_DEATH_DETAIL, payload: json.data})} 
 )}
