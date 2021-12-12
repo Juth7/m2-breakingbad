@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getEpisodes } from "../../redux/actions";
@@ -15,7 +15,7 @@ function Episodes() {
   
     const handleSubmit = (e)=> {
     e.preventDefault();
-    dispatch(getEpisodes(episodes))
+    dispatch(getEpisodes(filter))
     console.log(episodes)  
     setFilter(
       episodes.filter((epi) =>          
@@ -31,10 +31,6 @@ function Episodes() {
     setInput(e.target.value)
   } 
 
-  // useEffect(() => {
-  //   dispatch(getEpisodes())    
-  // }, [])
-
   return (
     <div className="Episodes">
       <h1>Episodes List</h1> <br/>
@@ -46,8 +42,7 @@ function Episodes() {
       <ul className="Episodes__list">
         {/*Aca vamos a mostrar la lista de episodios de "Breaking Bad"*/}        
         {filter?.map((ep)=> (                    
-          // e.series ==="Breaking Bad" &&
-          console.log(ep.episode_id),
+          // e.series ==="Breaking Bad" &&         
           <div key={ep.episode_id}>
             <Link to ={`/episodes/${ep.episode_id}`}>                 
               {ep.title}  

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import { getCharacters } from "../../redux/actions";
@@ -33,12 +33,10 @@ function Characters() {
   const handlechange = e=> {
     setQuery(e.target.value)
   } 
-
-  useEffect(()=>{
+  
      setTimeout(() => {
       setLoading(false)
      }, 250);  
-  },)
 
     return (
     <div className="Characters">

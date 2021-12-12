@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import logo from "../../img/logo.png";
 import "./Home.css";
 import {getRandomQuote} from '../../redux/actions'
@@ -10,29 +10,29 @@ function Home() {
   Que haces useEffect? https://es.reactjs.org/docs/hooks-effect.html
   */
   const response = useSelector((state)=>state.randomQuote)  //state.Estadoinicialdereducers
-  const [phrase, setPhrase] = useState();  
+  // const [phrase, setPhrase] = useState();  
   const dispatch = useDispatch()
 
-  // useEffect(()=> {  //AQUI ESTA EL USEEFFECT!!!  
-  //   dispatch(getRandomQuote())  
-  // },[]) 
+  useEffect(()=> {  //AQUI ESTA EL USEEFFECT!!!  
+    dispatch(getRandomQuote(response))  
+  },[dispatch]) 
 
 
-useEffect(()=> {  //AQUI ESTA EL USEEFFECT!!!
-  frase()
-},[!response.length]) 
+// useEffect(()=> {  //AQUI ESTA EL USEEFFECT!!!
+//   frase()
+// },[!response.length]) 
 
-const frase = ()=>{
- dispatch(getRandomQuote());
- setPhrase(response)
-}
+// const frase = ()=>{
+//  dispatch(getRandomQuote());
+//  setPhrase(response)
+// }
  
   return (
     <div className="Home">
       <img src={logo} alt="" className="Home__logo" />
 
       <div><hr/>
-       <h3>{phrase}</h3> {/*colocar {phrase} en el otro modo */}
+       <h3>{response}</h3> {/*colocar {phrase} en el otro modo */}
       </div>
         
     </div>

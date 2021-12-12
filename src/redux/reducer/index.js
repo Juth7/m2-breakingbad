@@ -47,7 +47,7 @@ const rootReducer = (state = initialState, action) => {
             console.log(action.payload)
             return{
                 ...state,
-                deaths: [state.characters, ...action.payload]
+                deaths: [state.deaths, ...action.payload]
             }
         case GET_DEATH_DETAIL:
             console.log(action.payload)

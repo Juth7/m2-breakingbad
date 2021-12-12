@@ -13,8 +13,7 @@ export default function DeathDetail() {
     const {id} = useParams()
     
     useEffect(() => {
-        dispatch(getEpisodeDetail(id))        
-    console.log(episodeDetail)
+        dispatch(getEpisodeDetail(id))
     }, [dispatch, id])
 
     return (
