@@ -43,12 +43,12 @@ export const getRandomQuote = ()=> dispatch=> {
 )}
 
 export const getDeaths = ()=> dispatch=> {
-    return axios('https://www.breakingbadapi.com/api/deaths')              
+    return axios(`https://www.breakingbadapi.com/api/deaths`)              
         .then(json=> dispatch({type: GET_DEATHS, payload: json.data}) 
 )}
 
-export const getDeathDetail = ()=> dispatch=> {
-    return axios(`https://www.breakingbadapi.com/api/deaths`)              
+export const getDeathDetail = (query)=> dispatch=> {
+    return axios(`https://www.breakingbadapi.com/api/death?name=${query}`)              
         .then(json=> {console.log(json.data);
             dispatch({type: GET_DEATH_DETAIL, payload: json.data})} 
 )}

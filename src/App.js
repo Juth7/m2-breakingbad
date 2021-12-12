@@ -22,7 +22,7 @@ function App() {
       <Route exact path='/episodes'component={Episodes}/>
       <Route exact path='/episodes/:id'component={EpisodeDetail}/>
       <Route exact path='/deaths' component={Deaths}/>
-      <Route exact path='/deaths/:name'component={DeathDetail}/>
+      <Route exact path='/deaths/:id'component={DeathDetail}/>
     </div>
   );
 }

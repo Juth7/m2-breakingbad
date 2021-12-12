@@ -47,13 +47,13 @@ const rootReducer = (state = initialState, action) => {
             console.log(action.payload)
             return{
                 ...state,
-                deaths: action.payload
+                deaths: [state.characters, ...action.payload]
             }
         case GET_DEATH_DETAIL:
             console.log(action.payload)
             return{
                 ...state,
-                deathDetail: action.payload  
+                deathDetail: [...state.characters, ...action.payload]
             }                     
         default:
             return {...state};

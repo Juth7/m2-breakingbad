@@ -9,6 +9,8 @@ export default function Deaths() {
     const dispatch = useDispatch()
     const deaths = useSelector(state => state.deaths)
 
+
+
     useEffect(() => {
         dispatch(getDeaths(deaths))
         console.log(deaths)
@@ -18,16 +20,16 @@ export default function Deaths() {
         <div className="Deaths">
           <h1>Deaths</h1><br/>                   
             {deaths?.map((d)=> (  
-              console.log(d),          
+              console.log(d) ,             
               <div key={d.death_id}>                              
-                {/* <Link to={`/deaths/${d.death_id}`}> */}
-                <ul>
+                <Link to={`/deaths/${d.death_id}`}>
+                
                   {d.death} <br />
                   {/* Cause: {d.cause} <br />
                   Responsible: {d.responsible} <br />
                   Last Words: {d.last_words}  */}
-                </ul> 
-                {/* </Link> */}
+                
+                </Link>
               </div> 
             ))          
             }        
