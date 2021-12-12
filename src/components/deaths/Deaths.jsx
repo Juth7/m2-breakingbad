@@ -22,7 +22,7 @@ export default function Deaths() {
             {deaths?.map((d)=> (  
               console.log(d) ,             
               <div key={d.death_id}>                              
-                <Link to={`/deaths/${d.death_id}`}>
+                <Link to={`/deaths/${d.death}`}>
                 
                   {d.death} <br />
                   {/* Cause: {d.cause} <br />

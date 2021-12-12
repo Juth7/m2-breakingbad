@@ -15,7 +15,7 @@ function CharacterDetail() {
    const {id} = useParams()  //coincide con el id de la ruta en app
 
    useEffect(()=>{
-     dispatch(getCharacterDetail('Walter+White')) 
+     dispatch(getCharacterDetail(id)) 
      console.log(id)          
    }, [dispatch, id])
 
