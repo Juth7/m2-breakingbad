@@ -10,27 +10,23 @@ function Episodes() {
 
   const episodes = useSelector(state => state.episodes)
   const dispatch = useDispatch();
-  const [input, setInput] = useState('');
-  const [filter, setFilter] = useState([]);
+  const [input, setInput] = useState('');  
+
+  const filtro = episodes.filter((epi) =>          
+  epi.title.toLowerCase().includes(input.toLowerCase()) ||
+  epi.episode === input
+) 
   
     const handleSubmit = (e)=> {
     e.preventDefault();
-    dispatch(getEpisodes(filter))
-    console.log(episodes)  
-    setFilter(
-      episodes.filter((epi) =>          
-        epi.title.toLowerCase().includes(input.toLowerCase()) ||
-        epi.episode === input
-      )
-      
-    );  
+    dispatch(getEpisodes(filtro))     
     setInput('')
   }
   
   const handlechange = e=> {
     setInput(e.target.value)
   } 
-
+  
   return (
     <div className="Episodes">
       <h1>Episodes List</h1> <br/>
@@ -41,14 +37,14 @@ function Episodes() {
 
       <ul className="Episodes__list">
         {/*Aca vamos a mostrar la lista de episodios de "Breaking Bad"*/}        
-        {filter?.map((ep)=> (                    
+        {filtro?.map((epi)=> (                    
           // e.series ==="Breaking Bad" &&         
-          <div key={ep.episode_id}>
-            <Link to ={`/episodes/${ep.episode_id}`}>                 
-              {ep.title}  
+          <div key={epi.episode_id}>
+            <Link to ={`/episodes/${epi.episode_id}`}>                 
+              {epi.title}  
             </Link>     
-          </div> 
-        ))          
+          </div>
+          ))         
         }
       </ul>
     </div>
