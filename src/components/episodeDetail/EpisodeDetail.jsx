@@ -1,9 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { getEpisodeDetail } from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { getEpisodeDetail, cleanCharacters } from '../../redux/actions'
 import "./EpisodeDetail.css";
 
 export default function DeathDetail() {
@@ -14,7 +12,7 @@ export default function DeathDetail() {
     
     useEffect(() => {
         dispatch(getEpisodeDetail(id))
-    }, [dispatch, id])
+    }, [dispatch, id])    
 
     return (
         <div className='EpisodeDetail'>

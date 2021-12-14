@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import CharacterCard from "../characterCard/CharacterCard";
-import { getCharacterDetail } from "../../redux/actions";
+import { getCharacterDetail, cleanCharacters } from "../../redux/actions";
 import "./CharacterDetail.css";
 
 function CharacterDetail() {

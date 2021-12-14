@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
-import { getDeaths } from '../../redux/actions'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react';
+import { getDeaths, cleanCharacters } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import "./Deaths.css";
 import { Link } from 'react-router-dom';
 
@@ -10,9 +9,19 @@ export default function Deaths() {
     const deaths = useSelector(state => state.deaths)
 
     useEffect(() => {
-        dispatch(getDeaths(deaths))
+        dispatch(getDeaths())
         console.log(deaths)
+        return () => {
+          dispatch(cleanCharacters())
+        }
     }, [dispatch])
+
+    // useEffect(() => {
+    
+    //   return () => {
+    //     dispatch(cleanCharacters())
+    //   }
+    // }, [])
 
     return (
         <div className="Deaths">

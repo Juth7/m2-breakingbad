@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
-import { getCharacters } from "../../redux/actions";
+import { getCharacters, cleanCharacters } from "../../redux/actions";
 import Spinner from "../Spinner";
 import "./Characters.css";
 
@@ -34,6 +34,13 @@ function Characters() {
     setQuery(e.target.value)
   } 
   
+  useEffect(() => {
+    
+    return () => {
+      dispatch(cleanCharacters())
+    }
+  }, [])
+
      setTimeout(() => {
       setLoading(false)
      }, 250);  
@@ -51,8 +58,8 @@ function Characters() {
        {isLoading ? (
        <Spinner />
        ) : (
-       characters?.map((c)=>          
-            <li key={c.char_id}> 
+       characters?.map((c, index)=>          
+            <li key={index}> 
             <Link to= {`/characters/${c.char_id}`}> 
             {c.name}
             </Link> 

@@ -1,8 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { getEpisodes } from "../../redux/actions";
-import { useState } from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEpisodes, cleanCharacters } from "../../redux/actions";
 import "./Episodes.css";
 import { Link } from "react-router-dom";
 
@@ -19,13 +17,20 @@ function Episodes() {
   
     const handleSubmit = (e)=> {
     e.preventDefault();
-    dispatch(getEpisodes(filtro))     
+    dispatch(getEpisodes())     
     setInput('')
   }
   
   const handlechange = e=> {
     setInput(e.target.value)
   } 
+
+  useEffect(() => {
+    
+    return () => {
+      dispatch(cleanCharacters())
+    }
+  }, [])
   
   return (
     <div className="Episodes">

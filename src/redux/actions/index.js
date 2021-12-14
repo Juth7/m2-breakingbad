@@ -53,4 +53,9 @@ export const getDeathDetail = (payload)=> dispatch=> {
             dispatch({type: GET_DEATH_DETAIL, payload: json.data})} 
 )}
 
-
+export const cleanCharacters = () => {
+    return {
+        type: GET_CHARACTERS,
+        payload: [],
+      }
+};

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getDeathDetail } from '../../redux/actions'
+import { getDeathDetail, cleanCharacters } from '../../redux/actions'
 import "./DeathDetail.css";
 import { useParams } from 'react-router-dom'
 
@@ -8,9 +8,7 @@ export default function DeathDetail() {
 
     const dispatch = useDispatch()
     const deathDetail = useSelector(state => state.deathDetail)  
-    let { name } = useParams()
-    console.log(deathDetail)
-    
+    let { name } = useParams()    
     
     useEffect(() => {
       dispatch(getDeathDetail(name));
