@@ -59,3 +59,30 @@ export const cleanCharacters = () => {
         payload: [],
       }
 };
+
+export const cleanDetail = () => {
+    return {
+        type: GET_CHARACTER_DETAIL,
+        payload: [],
+      }
+};
+
+export const cleanEpisodes = () => ({
+    type: GET_EPISODES,
+    payload: []
+})
+
+export const cleanEpisodeDetail = () => ({
+    type: GET_EPISODE_DETAIL,
+    payload: []
+})
+
+export const cleanDeaths = () => ({
+    type: GET_DEATHS,
+    payload: []
+})
+
+export const cleanDeathDetail = () => ({
+    type: GET_DEATH_DETAIL,
+    payload: []
+})

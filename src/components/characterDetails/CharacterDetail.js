@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import CharacterCard from "../characterCard/CharacterCard";
-import { getCharacterDetail, cleanCharacters } from "../../redux/actions";
+import { getCharacterDetail, cleanDetail } from "../../redux/actions";
 import "./CharacterDetail.css";
+import '../Spinner'
+import Spinner from "../Spinner";
 
 function CharacterDetail() {
   /*
@@ -16,13 +18,16 @@ function CharacterDetail() {
 
    useEffect(()=>{
      dispatch(getCharacterDetail(id)) 
-     console.log(id)          
-   }, [dispatch, id])
+     return ()=> {
+      dispatch(cleanDetail())}     
+   }, [dispatch]) 
 
   //  char_id":1,"name":"Walter White","birthday":"09-07-1958","occupation":["High School Chemistry Teacher","Meth King Pin"],"img":"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg","status":"Presumed dead","nickname":"Heisenberg","appearance":[1,2,3,4,5],"portrayed":"Bryan Cranston","category":"Breaking Bad","better_call_saul_appearance":[]
 
 
   return (
+<>
+{detail.length === 0 ? <Spinner /> :
     <div className="CharacterDetail">
       <h1>Character Details</h1> 
       {/* Método para mostrar en este mismo componente  */}
@@ -55,6 +60,8 @@ function CharacterDetail() {
       {/* Usando el mismo componente */}
       {/* <img className="CharacterDetail__Photo" src={detail.img} alt="" />    */}
     </div>
+}
+    </>
   );
 }
 

@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getEpisodeDetail, cleanCharacters } from '../../redux/actions'
+import { getEpisodeDetail, cleanEpisodeDetail } from '../../redux/actions'
 import "./EpisodeDetail.css";
+import Spinner from '../Spinner';
 
 export default function DeathDetail() {
 
@@ -12,9 +13,13 @@ export default function DeathDetail() {
     
     useEffect(() => {
         dispatch(getEpisodeDetail(id))
+        return () => {
+            dispatch(cleanEpisodeDetail())
+        }
     }, [dispatch, id])    
 
     return (
+    <> {episodeDetail.length === 0 ? <Spinner /> :
         <div className='EpisodeDetail'>
             <h1>Episode Details</h1><br/>
             <div>
@@ -25,6 +30,7 @@ export default function DeathDetail() {
                 <h4>Characters: {episodeDetail.characters?.map(ch=>(
                 <p>{ch}</p>))}</h4>  
             </div>
-        </div>
+        </div>}
+    </>
     )
 }
