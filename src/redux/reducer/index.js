@@ -1,4 +1,4 @@
-import { GET_CHARACTER_DETAIL, GET_CHARACTERS, GET_EPISODES, GET_RANDOM_QUOTE, GET_DEATHS, GET_DEATH_DETAIL, GET_EPISODE_DETAIL } from "../actions";
+import { GET_CHARACTER_DETAIL, GET_CHARACTERS, GET_EPISODES, GET_RANDOM_QUOTE, GET_DEATHS, GET_DEATH_DETAIL, GET_EPISODE_DETAIL, FILTER_EPISODES } from "../actions";
 
 
 const initialState= {
@@ -9,6 +9,7 @@ const initialState= {
     randomQuote: [],
     deaths: [],
     deathDetail: [],
+    episodesFilter: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -29,7 +30,8 @@ const rootReducer = (state = initialState, action) => {
         console.log('payload' ,action.payload)          
             return{
                 ...state,
-                episodes: action.payload 
+                episodes: action.payload,
+                episodesFilter: action.payload 
             }
         case GET_EPISODE_DETAIL:
             console.log(state.characterDetail)
@@ -54,7 +56,15 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 deathDetail: action.payload
-            }                     
+            } 
+        case FILTER_EPISODES:
+            const filtro = state.episodes.filter(e=>(              
+                e.title.toLowerCase().includes(action.payload.toLowerCase()) ||
+                (e.episode === action.payload || e.episode_id === action.payload)))
+            return{
+                    ...state,
+                    episodesFilter: filtro,             
+            }                        
         default:
             return {...state};
     }

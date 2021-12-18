@@ -1,4 +1,5 @@
 import axios from "axios";
+import Episodes from "../../components/episodes/Episodes";
 export const GET_CHARACTER_DETAIL = 'GET_CHARACTER_DETAIL';
 export const GET_CHARACTERS = 'GET_CHARACTERS';
 export const GET_EPISODES = 'GET_EPISODES';
@@ -6,6 +7,7 @@ export const GET_RANDOM_QUOTE = 'GET_RANDOM_QUOTE';
 export const GET_DEATHS = 'GET_DEATHS';
 export const GET_EPISODE_DETAIL = 'GET_EPISODE_DETAIL';
 export const GET_DEATH_DETAIL = 'GET_DEATH_DETAIL';
+export const FILTER_EPISODES = 'FILTER_EPISODES'
 
 export const getCharacters = (query)=>(dispatch) => {
     return fetch(`https://www.breakingbadapi.com/api/characters?name=${query}`)
@@ -85,4 +87,9 @@ export const cleanDeaths = () => ({
 export const cleanDeathDetail = () => ({
     type: GET_DEATH_DETAIL,
     payload: []
+})
+
+export const filterEpisodes = (payload) => ({
+    type: FILTER_EPISODES,
+    payload
 })
